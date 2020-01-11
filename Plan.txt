@@ -13,7 +13,8 @@ MotionDetect - Jasmine
 Timer - Jackie
 	start(int minutes)
 	getTimeLeft()
-	stop()
+	restart(int minutes)
+	isTimerDone()
 Speaker - Isabel
 	on()
 	off()
