@@ -1,18 +1,15 @@
 #ifndef MOTION_DETECT_H 
 #define MOTION_DETECT_H 
-#define Sensor 7 
+#define SENSOR_PORT 6
 #include <Arduino.h> 
  
 class MotionDetect 
 { 
   public: 
+  MotionDetect(); 
   int PIRSensor(); 
   private:
-  int PIRValue = 0; 
+  int PIRValue; 
 }; 
  
 #endif 
-
-
-
-
