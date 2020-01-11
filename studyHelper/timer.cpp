@@ -10,7 +10,11 @@ void Timer::start(int minutes)
 
 int Timer::getTimeLeft()
 {
-    return (millis() / 1000) * 60;
+    int timeleft = endTime - ((millis() / 1000) * 60);
+    if (timeleft > 0)
+        return timeleft;
+    else
+        return 0;
 }
 
 bool Timer::isTimerDone()
