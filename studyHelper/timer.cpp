@@ -8,14 +8,18 @@ void Timer::start(int minutes)
     endTime = startTime + minutes;
 }
 
-int Timer::getTimeLeft()
+double Timer::getTimeLeft()
 {
-    return (millis() / 1000) * 60;
+    double timeleft = endTime - ((millis() / 1000) * 60);
+    if (timeleft > 0)
+        return timeleft;
+    else
+        return 0;
 }
 
 bool Timer::isTimerDone()
 {
-    int currentTime = (millis() / 1000) * 60;
+    double currentTime = (millis() / 1000) * 60;
     if (currentTime >= endTime)
     {
       return true;   
@@ -25,6 +29,6 @@ bool Timer::isTimerDone()
 
 void Timer::restart()
 {
-    startTime = 0;
-    endTime = 0;
+    startTime = 0.0;
+    endTime = 0.0;
 }
