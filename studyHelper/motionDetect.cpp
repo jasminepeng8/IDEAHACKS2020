@@ -6,7 +6,7 @@
 class MotionDetect 
 { 
 //PIR: Passive Infrared 
-  static int PIRSensor()
+  int MotionDetect::PIRSensor()
   {
     if(digitalRead(Sensor) == HIGH) 
     {
