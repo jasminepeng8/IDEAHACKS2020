@@ -5,3 +5,5 @@ Hardware:
 	Ultrasonic sensor/distance sensor
 	OLED Display
 	Batteries (9V) and battery connector
+
+We are creating an alarm system for studying or Pavlov
