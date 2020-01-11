@@ -7,12 +7,11 @@ class Timer
 {
   public:
 	  void start(int minutes);
-	  int getTimeLeft();
+	  double getTimeLeft();
 	  bool isTimerDone();
     void restart();
   private:
-	  int startTime, endTime;
-	  int duration;
+	  double startTime, endTime;
 };
 
 #endif
