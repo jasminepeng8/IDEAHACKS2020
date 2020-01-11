@@ -1,0 +1,7 @@
+Hardware:
+	Arduino Nano
+	PIR Sensor
+	Breadboard
+	Ultrasonic sensor/distance sensor
+	OLED Display
+	Batteries (9V) and battery connector
