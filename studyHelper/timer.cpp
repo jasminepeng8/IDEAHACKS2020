@@ -12,9 +12,12 @@ Timer::Timer()
 
 void Timer::start(double minutes)
 {
-    startTime = millis();
-    duration = minutes * 60 * 1000;
-    endTime = startTime + duration;
+    if (isTimerDone())
+    {
+      startTime = millis();
+      duration = minutes * 60 * 1000;
+      endTime = startTime + duration;
+    }
 }
 
 double Timer::getTimeLeft()
@@ -36,8 +39,9 @@ bool Timer::isTimerDone()
     return false;
 }
 
-void Timer::restart()
+void Timer::restart(double minutes)
 {
     startTime = millis();
-    endTime = 0.0;
+    duration = minutes * 60 * 1000;
+    endTime = startTime + duration;
 }
