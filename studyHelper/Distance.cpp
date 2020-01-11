@@ -1,43 +1,53 @@
+#include "Arduino.h"
+#include "Distance.h" 
+
 //initial set up for the distance sensor 
+/*
 void Distance::setup()
 {
-pinMode(triggerpin, OUTPUT); 
+pinMode(trigPin, OUTPUT); 
 pinMode(echopin, INPUT);
-float duration, distance; 
-int distance = 0; 
+}
+*/
+
+Distance::Distance(int trig, int echo)
+{
+pinMode(trig, OUTPUT); 
+_trigpin = trig; 
+pinMode(echo, INPUT);
+_echopin = echo;  
 }
 
-void Distance::getDistance()
-{
-  
-}
 //trigger pin set up to read 
 void Distance::setuptriggerpin()
 {
-  digitalWrite(trigPin, LOW);
+ digitalWrite(_trigpin, LOW);
   delayMicroseconds(5);
-  digitalWrite(trigPin, HIGH);
+  digitalWrite(_trigpin, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+  digitalWrite(_trigpin, LOW);
 }
 //measure distance function
 int Distance::measure()
 {
-  duration = pulseIn(echoPin, HIGH); //in seconds
+  float duration; 
+duration = pulseIn(_echopin, HIGH); //in seconds (but that's overall time)
+/*echoPin = digitalRead(echopin); 
+if (echoPin == HIGH)
+{
+  time =   
+}
+else 
+{
+  
+}*/
+int distance = 0; 
   if (duration != 0) 
   {
     distance = (duration*.0343)/2; 
   }
   return distance; 
+   Serial.print(distance);
+   Serial.print("in"); 
 }
-
- 
-  // Convert the time into a distance
-  cm = (duration/2) / 29.1;     // Divide by 29.1 or multiply by 0.0343
-  inches = (duration/2) / 74;   // Divide by 74 or multiply by 0.0135
   
-  Serial.print(inches);
-  Serial.print("in, ");
-  Serial.print(cm);
-  Serial.print("cm");
-  Serial.println();
