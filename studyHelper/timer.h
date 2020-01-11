@@ -6,12 +6,15 @@
 class Timer
 {
   public:
-	  void start(int minutes);
+    Timer();
+	  void start(double minutes);
 	  double getTimeLeft();
 	  bool isTimerDone();
     void restart();
   private:
 	  double startTime, endTime;
+    int restartCount;
+    double duration;
 };
 
 #endif

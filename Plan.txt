@@ -18,10 +18,12 @@ Timer - Jackie
 Speaker - Isabel
 	on()
 	off()
-	increaseVolume()
-	decreaseVolume()
+	increaseNote()
+	decreaseNote()
 Distance - Christina
 	getDistance()
+OLEDDisplay
+	
 
 
 *distance sensor to increase volume of sound

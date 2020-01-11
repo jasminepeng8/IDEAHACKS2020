@@ -6,7 +6,7 @@
 class MotionDetect 
 { 
   public: 
-  static int PIRSensor(); 
+  int PIRSensor(); 
   private:
   int PIRValue = 0; 
 }; 
