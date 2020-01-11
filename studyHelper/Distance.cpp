@@ -10,7 +10,7 @@ pinMode(echopin, INPUT);
 }
 */
 
-Distance::Distance(int trig, int echo)
+Distance::Distance()
 {
 pinMode(trig, OUTPUT); 
 _trigpin = trig; 
@@ -45,9 +45,13 @@ int distance = 0;
   if (duration != 0) 
   {
     distance = (duration*.0343)/2; 
+    Serial.print("Distance found is "); 
+    Serial.print(distance); 
   }
+  /*
   return distance; 
    Serial.print(distance);
    Serial.print("in"); 
+   */
 }
   

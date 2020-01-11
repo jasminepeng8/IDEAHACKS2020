@@ -3,8 +3,9 @@
 #define DISTANCE_H
 
 #include <Arduino.h>
-const int trigPin  = 5; 
-const int echopin = 6;
+#define trig  5
+#define echo  6
+
 /*
 pinMode(trigPin, OUTPUT); 
 pinMode(echopin, INPUT);
@@ -17,12 +18,13 @@ int echoPin = 0;
 class Distance
 {
 public:
-  Distance (int trig, int echo); 
+  Distance(); 
   int measure(); 
+  void setuptriggerpin(); 
   //void setup(); 
   //void getDistance(); 
 private:
-  void setuptriggerpin(); 
+ // void setuptriggerpin(); 
   int _trigpin; 
   int _echopin; 
 };
