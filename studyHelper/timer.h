@@ -10,7 +10,7 @@ class Timer
 	  void start(double minutes);
 	  double getTimeLeft();
 	  bool isTimerDone();
-    void restart();
+    void restart(double minutes);
   private:
 	  double startTime, endTime;
     int restartCount;
