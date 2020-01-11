@@ -8,18 +8,18 @@ Hardware:
 
 Main class: studyHelp.ino
 
-MotionDetect
+MotionDetect - Jasmine
 	isMoving()
-Timer
+Timer - Jackie
 	start(int minutes)
 	getTimeLeft()
 	stop()
-Speaker
+Speaker - Isabel
 	on()
 	off()
 	increaseVolume()
 	decreaseVolume()
-Distance
+Distance - Christina
 	getDistance()
 
 
