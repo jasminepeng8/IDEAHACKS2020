@@ -1,0 +1,12 @@
+#ifndef SPEAKER_H
+#define SPEAKER_H
+
+#include <Arduino.h>
+
+class Speaker
+{
+  public:
+  private:
+};
+
+#endif
