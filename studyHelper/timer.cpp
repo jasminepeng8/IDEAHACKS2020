@@ -2,24 +2,33 @@
 #include "timer.h"
 #include <Arduino.h>
 
-void Timer::start(int minutes)
+Timer::Timer() 
 {
-    startTime = (millis() / 1000) * 60;
-    endTime = startTime + minutes;
+  restartCount = 0;
+  startTime = 0;
+  endTime = 0;
+  duration = 0;
+}
+
+void Timer::start(double minutes)
+{
+    startTime = millis();
+    duration = minutes * 60 * 1000;
+    endTime = startTime + duration;
 }
 
 double Timer::getTimeLeft()
-{
-    double timeleft = endTime - ((millis() / 1000) * 60);
-    if (timeleft > 0)
-        return timeleft;
-    else
+{   
+    double timeleft = endTime - millis(); 
+    if (timeleft <= 0)
         return 0;
+    else
+        return timeleft;
 }
 
 bool Timer::isTimerDone()
 {
-    double currentTime = (millis() / 1000) * 60;
+    double currentTime = millis();
     if (currentTime >= endTime)
     {
       return true;   
@@ -29,6 +38,6 @@ bool Timer::isTimerDone()
 
 void Timer::restart()
 {
-    startTime = 0.0;
+    startTime = millis();
     endTime = 0.0;
 }
