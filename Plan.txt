@@ -6,4 +6,21 @@ Hardware:
 	OLED Display
 	Batteries (9V) and battery connector
 
-We are creating an alarm system for studying or Pavlov
+Main class: studyHelp.ino
+
+MotionDetect
+	isMoving()
+Timer
+	start(int minutes)
+	getTimeLeft()
+	stop()
+Speaker
+	on()
+	off()
+	increaseVolume()
+	decreaseVolume()
+Distance
+	getDistance()
+
+
+*distance sensor to increase volume of sound
