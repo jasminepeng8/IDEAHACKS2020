@@ -11,9 +11,9 @@ Main class: studyHelp.ino
 MotionDetect - Jasmine
 	isMoving()
 Timer - Jackie
-	start(int minutes)
+	start(double minutes)
 	getTimeLeft()
-	restart(int minutes)
+	restart(double minutes)
 	isTimerDone()
 Speaker - Isabel
 	on()
