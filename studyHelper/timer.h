@@ -10,11 +10,13 @@ class Timer
 	  void start(double minutes);
 	  double getTimeLeft();
 	  bool isTimerDone();
-    void restart(double minutes);
+    void pause();
+    void play();
   private:
-	  double startTime, endTime;
+	  double startTime, endTime, duration, pauseTime;
     int restartCount;
-    double duration;
+    bool paused;
+    void restart(double minutes);
 };
 
 #endif

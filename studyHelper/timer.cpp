@@ -8,6 +8,8 @@ Timer::Timer()
   startTime = 0;
   endTime = 0;
   duration = 0;
+  pauseTime = 0;
+  paused = false;
 }
 
 void Timer::start(double minutes)
@@ -42,6 +44,26 @@ bool Timer::isTimerDone()
 void Timer::restart(double minutes)
 {
     startTime = millis();
-    duration = minutes * 60 * 1000;
+    duration = pauseTime;
     endTime = startTime + duration;
+}
+
+void Timer::pause()
+{
+    startTime = millis();
+    if (!paused)
+      pauseTime = endTime - startTime;
+    endTime = startTime + pauseTime;
+    paused = true;
+}
+
+void Timer::play()
+{
+  if (paused)
+  {
+    duration = pauseTime;
+    restart(duration);
+    pauseTime = 0;
+    paused = false;
+  }
 }
