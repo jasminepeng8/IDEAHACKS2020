@@ -9,7 +9,7 @@ Hardware:
 Main class: studyHelp.ino
 
 MotionDetect - Jasmine
-	isMoving()
+	int PIRSensor()
 Timer - Jackie
 	start(double minutes)
 	getTimeLeft()
@@ -21,7 +21,8 @@ Speaker - Isabel
 	increaseNote()
 	decreaseNote()
 Distance - Christina
-	getDistance()
+	int measure()
+	void setuptriggerpin()
 OLEDDisplay
 	
 
