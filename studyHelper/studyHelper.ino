@@ -24,10 +24,12 @@ void setup() {
   oled.startup();
   t.start(1);
   pinMode(7, INPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  Serial.print(d.measure());
 
   if(triggered)
   {
