@@ -10,65 +10,55 @@ Timer t;
 Distance d;
 oledDisplay oled;
 
+int setDistanceUpper;
+int setDistanceLower;
+int distanceTolerance = 2;
+bool triggered;
+
 void setup() {
   // put your setup code here, to run once:
-  t.start(.5);
+  setDistanceUpper = 0;
+  setDistanceLower = 0;
+  d.setuptriggerpin();
+  triggered = false;
   oled.startup();
-  pinMode(5, INPUT);
+  t.start(1);
+  pinMode(7, INPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if(digitalRead(5) == HIGH)
+
+  if(triggered)
   {
-    t.pause();
-  }
-  
-  else if(!t.isTimerDone())
-  {
-    oled.show(t.getTimeLeft());
-    t.play();
+    if(d.measure() > setDistanceUpper || d.measure() < setDistanceUpper)
+    {
+      s.off();
+      triggered = false;
+    }
   }
   else
   {
-    oled.endMessage();
+    if(digitalRead(7) == HIGH)
+    {
+      // Use a tolerance to compensate for sensor drift
+      setDistanceUpper = d.measure() + distanceTolerance;
+      setDistanceLower = d.measure() - distanceTolerance;
+    }
+    
+    if(!t.isTimerDone())
+    {
+      oled.show(t.getTimeLeft());
+      if(d.measure() > setDistanceUpper || d.measure() < setDistanceUpper)
+      {
+        s.on();
+        triggered = true;
+        t.pause();
+      }
+    }
+    else
+    {
+      oled.endMessage();
+    }
   }
 }
-  /*if(md.PIRSensor())
-  {
-    s.on();
-    int distance = d.measureDistance();
-  }
-  oled.endMessage();
-}
-
-/*
-void loop() {
-  // put your main code here, to run repeatedly:
-  
-  t.start(0.1);
-  Serial.print("time beginning: ");
-  Serial.print(millis());
-  Serial.print("\n");
-  while(!t.isTimerDone())
-  {
-    s.off();
-  }
-    Serial.print("current time: ");
-    Serial.print(millis());
-    Serial.print("\n");
-    timeLeft = t.getTimeLeft();
-    Serial.print("time left: ");
-    Serial.print(timeLeft);
-    Serial.print("\n");
-    t.start(0.1);
-    Serial.print("time left after start: ");
-    Serial.print(timeLeft);
-    Serial.print("\n");
-  }
-  t.restart(0.1);
-  Serial.print("time at restart: ");
-  Serial.print(t.getTimeLeft());
-  Serial.print("\n");
-}
-*/
