@@ -15,26 +15,25 @@ void setup() {
   t.start(.5);
   oled.startup();
   pinMode(5, INPUT);
-  Serial.begin(9600);
-  oled.startup();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
   if(digitalRead(5) == HIGH)
   {
-    oled.endMessage();
+    t.pause();
   }
   
   else if(!t.isTimerDone())
   {
     oled.show(t.getTimeLeft());
+    t.play();
   }
   else
   {
-    //oled.endMessage();
+    oled.endMessage();
   }
+}
   /*if(md.PIRSensor())
   {
     s.on();
@@ -54,7 +53,7 @@ void loop() {
   while(!t.isTimerDone())
   {
     s.off();
-  }*/
+  }
     Serial.print("current time: ");
     Serial.print(millis());
     Serial.print("\n");
