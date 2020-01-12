@@ -48,7 +48,6 @@ void oledDisplay::show(double minutes) {
   display.setCursor(66, 51);
   display.print(seconds);     
   display.display();      
-  delay(100);
 }
 
 void oledDisplay::endMessage(void)
