@@ -1,6 +1,12 @@
 
 #include "oledDisplay.h"
 
+oledDisplay::oledDisplay()
+{
+  lastMin = 0;
+  lastSec = 0;
+}
+
 void oledDisplay::startup(void) {
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3D)) { // Address 0x3D for 128x64
@@ -27,6 +33,14 @@ void oledDisplay::startup(void) {
 }
 
 void oledDisplay::show(double minutes) {
+  int m = minutes / 60000;
+  int s = (minutes - (double)(m * 60000)) / 1000;
+
+  if(m == lastMin && s == lastSec)
+  {
+    return;
+  }
+  
   display.clearDisplay();
 
   display.setTextSize(1); 
@@ -39,15 +53,16 @@ void oledDisplay::show(double minutes) {
   display.setCursor(35, 40);      
   display.println(F("Time Left: ")); 
   display.setCursor(50, 51);
-  int m = minutes / 60000;
-  int seconds = (minutes - (double)(m * 60000)) / 1000;
   display.println(m);     
   display.setCursor(58, 51);
-   display.print(F(":"));     
+  display.print(F(":"));     
   display.display();      
   display.setCursor(66, 51);
-  display.print(seconds);     
-  display.display();      
+  display.print(s);     
+  display.display();
+
+  lastMin = m;
+  lastSec = s;
 }
 
 void oledDisplay::endMessage(void)
