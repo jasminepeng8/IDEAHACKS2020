@@ -5,6 +5,7 @@ oledDisplay::oledDisplay()
 {
   lastMin = 0;
   lastSec = 0;
+  numTrig = 0;
 }
 
 void oledDisplay::startup(void) {
@@ -48,7 +49,7 @@ void oledDisplay::show(double minutes) {
   display.setCursor(10, 13);      // how to set position on screen
   display.println(F("Number of attempts: ")); // how to print strings
   display.setCursor(58, 24);
-  display.println(0);     // how to print numbers
+  display.println(numTrig);     // how to print numbers
   
   display.setCursor(35, 40);      
   display.println(F("Time Left: ")); 
@@ -77,4 +78,9 @@ void oledDisplay::endMessage(void)
   display.println(F("it to the end! (:"));
   display.display();      
   delay(5000);
+}
+
+void oledDisplay::updateNumTrigger(int num)
+{
+  numTrig = num;
 }

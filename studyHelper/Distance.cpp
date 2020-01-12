@@ -21,38 +21,37 @@ _echopin = echo;
 //trigger pin set up to read 
 void Distance::setuptriggerpin()
 {
- digitalWrite(_trigpin, LOW);
+  digitalWrite(_trigpin, LOW);
   delayMicroseconds(5);
   digitalWrite(_trigpin, HIGH);
   delayMicroseconds(10);
   digitalWrite(_trigpin, LOW);
+  delayMicroseconds(5);
 }
 //measure distance function
-int Distance::measure()
+float Distance::measure()
 {
   float duration; 
   duration = pulseIn(_echopin, HIGH); //in seconds (but that's overall time)
-  /*echoPin = digitalRead(echopin); 
-  if (echoPin == HIGH)
-  {
-    time =   
-  }
-  else 
-  {
-    
-  }*/
-  int distance = 0; 
+
+  float distance = 0; 
   if (duration != 0) 
   {
     distance = (duration*.0343)/2; 
-    Serial.print("Distance found is "); 
-    Serial.print(distance); 
+    //Serial.print("\n Distance found is "); 
+   //Serial.print(distance); 
+  }
+  else 
+  {
+   
+    Serial.println("No distance"); 
   }
   /*
   return distance; 
    Serial.print(distance);
    Serial.print("in"); 
    */
+   
    return distance;
 }
   

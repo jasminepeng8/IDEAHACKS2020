@@ -43,10 +43,12 @@ class oledDisplay
     void show(double minutes);
     void startup(void);
     void endMessage(void);
+    void updateNumTrigger(int num);
   private:
     Adafruit_SSD1306 display = Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
     int lastMin;
     int lastSec;
+    int numTrig;
 };
 
 #endif

@@ -19,7 +19,7 @@ class Distance
 {
 public:
   Distance(); 
-  int measure(); 
+  float measure(); 
   void setuptriggerpin(); 
   //void setup(); 
   //void getDistance(); 
