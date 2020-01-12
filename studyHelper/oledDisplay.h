@@ -39,8 +39,9 @@ static const unsigned char PROGMEM logo_bmp[] =
 class oledDisplay
 {
   public:
-    void numberTries(void);
+    void show(double minutes);
     void startup(void);
+    void endMessage(void);
   private:
     Adafruit_SSD1306 display = Adafruit_SSD1306(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 };

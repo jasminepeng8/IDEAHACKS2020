@@ -26,17 +26,41 @@ void oledDisplay::startup(void) {
   // display.display(). These examples demonstrate both approaches...
 }
 
-void oledDisplay::numberTries(void) {
+void oledDisplay::show(double minutes) {
   display.clearDisplay();
 
-  display.setTextSize(1); // Draw 2X-scale text
+  display.setTextSize(1); 
   display.setTextColor(SSD1306_WHITE);
-  display.setCursor(10, 28);
-  display.println(F("Number of attempts: "));
-  display.setCursor(58, 36);
-  display.println(0);
-  display.display();      // Show initial text
+  display.setCursor(10, 13);      // how to set position on screen
+  display.println(F("Number of attempts: ")); // how to print strings
+  display.setCursor(58, 24);
+  display.println(0);     // how to print numbers
+  
+  display.setCursor(35, 40);      
+  display.println(F("Time Left: ")); 
+  display.setCursor(50, 51);
+  int m = minutes / 60000;
+  int seconds = (minutes - (double)(m * 60000)) / 1000;
+  display.println(m);     
+  display.setCursor(58, 51);
+   display.print(F(":"));     
+  display.display();      
+  display.setCursor(66, 51);
+  display.print(seconds);     
+  display.display();      
   delay(100);
+}
 
+void oledDisplay::endMessage(void)
+{
+  display.clearDisplay();
 
+  display.setTextSize(1); 
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(10, 28);      
+  display.println(F("Congrats on making")); 
+  display.setCursor(13, 36);      
+  display.println(F("it to the end! (:"));
+  display.display();      
+  delay(5000);
 }
