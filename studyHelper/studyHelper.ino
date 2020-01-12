@@ -12,29 +12,33 @@ oledDisplay oled;
 
 void setup() {
   // put your setup code here, to run once:
+  t.start(.5);
+  oled.startup();
+  pinMode(5, INPUT);
   Serial.begin(9600);
   oled.startup();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  t.start(0.25);             // in minutes
-  while(!t.isTimerDone())
+
+  if(digitalRead(5) == HIGH)
   {
-    if(md.PIRSensor())      // alert if the PIR sensor goes off
-    {
-       s.on();
-       int distance = d.measureDistance();
-    }
-    else
-    {
-       s.off();
-    }
-     timeLeft = t.getTimeLeft();
-     Serial.print(timeLeft);
-     Serial.print("\n");
-     oled.show(timeLeft);    // Draw number of tries and timer
-     delay(1000);
+    oled.endMessage();
+  }
+  
+  else if(!t.isTimerDone())
+  {
+    oled.show(t.getTimeLeft());
+  }
+  else
+  {
+    //oled.endMessage();
+  }
+  /*if(md.PIRSensor())
+  {
+    s.on();
+    int distance = d.measureDistance();
   }
   oled.endMessage();
 }
@@ -49,6 +53,8 @@ void loop() {
   Serial.print("\n");
   while(!t.isTimerDone())
   {
+    s.off();
+  }*/
     Serial.print("current time: ");
     Serial.print(millis());
     Serial.print("\n");
